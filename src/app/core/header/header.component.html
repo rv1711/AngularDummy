@@ -1,0 +1,13 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+        <span>My Shopping App</span>
+        <span class="spacer"></span>
+        <div *ngIf="!userLoggedIn">
+            <button (click)="openLoginDialog()">Login</button>
+            <button routerLink="/registerUser">Register</button>
+        </div>
+        <div *ngIf="userLoggedIn">
+            <button (click)="openLogoutDialog()">Logout</button>
+        </div>
+      </mat-toolbar-row>
+</mat-toolbar>

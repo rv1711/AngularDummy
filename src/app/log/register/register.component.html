@@ -1,0 +1,35 @@
+<form [formGroup]="registerForm">
+
+    <label>
+        Name:
+        <input type="text" formControlName="displayName"><br>
+        <div *ngIf="f.displayName.errors && (f.displayName.touched || f.displayName.dirty)">
+            <div *ngIf="f.displayName.errors.required">Required</div>
+        </div>
+    </label>
+    <label>
+        User Name:
+        <input type="text" formControlName="userName"><br>
+        <div *ngIf="f.userName.errors && (f.userName.touched || f.userName.dirty)">
+            <div *ngIf="f.userName.errors.required">Required</div>
+        </div>
+    </label>
+
+    <label>
+        Password:
+        <input type="password" formControlName="password">
+        <div *ngIf="f.password.errors && (f.password.touched || f.password.dirty)">
+            <div *ngIf="f.password.errors.required">Required</div>
+        </div>
+    </label>
+    <br>
+    <label>Role
+        <mat-radio-group formControlName="role">
+            <mat-radio-button *ngFor="let role of roles" [value]="role">
+                {{role.displayName}}
+            </mat-radio-button>
+        </mat-radio-group>
+    </label>
+    <br>
+    <button [disabled]=!registerForm.valid (click)="onRegister()">Register</button>
+</form>

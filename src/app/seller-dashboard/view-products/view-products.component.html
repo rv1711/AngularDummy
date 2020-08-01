@@ -1,0 +1,21 @@
+<div *ngIf="productAvl">
+  <table style="width:100%">
+    <tr>
+      <th *ngFor="let header of headers">{{header}}</th>
+    </tr>
+    <tr *ngFor="let userProduct of userProducts">
+      <td>{{userProduct.name}}</td>
+      <td>{{userProduct.mrp}}</td>
+      <td>{{userProduct.quantity}}</td>
+      <td>{{userProduct.category.name}}</td>
+      <td>{{userProduct.onSale}}</td>
+      <td>{{userProduct.salePrice}}</td>
+      <td><button [routerLink]="['..','editProduct',userProduct._id]">Edit</button><button
+          (click)="onDelete(userProduct)">Delete</button></td>
+    </tr>
+  </table>
+
+</div>
+<div *ngIf="!productAvl">
+  Sorry, Nothing to show
+</div>

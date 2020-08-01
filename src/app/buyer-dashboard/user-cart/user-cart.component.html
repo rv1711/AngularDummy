@@ -1,0 +1,19 @@
+<div *ngIf="cartEmpty">
+    Oops, There seems to be nothing in cart
+</div>
+<div *ngIf="!cartEmpty">
+
+    <table style="width:100%">
+        <tr>
+          <th *ngFor="let header of headers">{{header}}</th>
+        </tr>
+        <tr *ngFor="let cartProduct of cartProducts">
+          <td>{{cartProduct.product.name}}</td>
+          <td>{{cartProduct.quantity}}</td>
+          <td>{{cartProduct.product.onSale ? cartProduct.product.salePrice : cartProduct.product.mrp}}</td>
+          <td>{{cartProduct.quantity*(cartProduct.product.onSale ? cartProduct.product.salePrice : cartProduct.product.mrp)}}</td>
+        </tr>
+      </table><br><br><br><br>
+      <div>Total Cart Value: {{totalCartValue}}</div>
+    <br><button (click)="checkOut()">Checkout</button>
+</div>

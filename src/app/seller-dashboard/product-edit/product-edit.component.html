@@ -1,0 +1,52 @@
+<form [formGroup]="editProductForm">
+
+    <label>
+        Product Name:
+        <input type="text" formControlName="productName"><br>
+        <div *ngIf="f.productName.errors && (f.productName.touched || f.productName.dirty)">
+            <div *ngIf="f.productName.errors.required">Required</div>
+        </div>
+    </label>
+    <br>
+    <label>
+        Category:
+        <input type="text" formControlName="category"><br>
+        <div *ngIf="f.category.errors && (f.category.touched || f.category.dirty)">
+            <div *ngIf="f.category.errors.required">Required</div>
+        </div>
+    </label>
+    <br>
+    <label>
+        MRP:
+        <input type="number" formControlName="mrp"><br>
+        <div *ngIf="f.mrp.errors && (f.mrp.touched || f.mrp.dirty)">
+            <div *ngIf="f.mrp.errors.required">Required</div>
+        </div>
+    </label>
+    <br>
+    <label>On Sale
+        <mat-radio-group formControlName="onSale">
+            <mat-radio-button *ngFor="let onSalev of onSales" [value]="onSalev.value">
+                {{onSalev.display}}
+            </mat-radio-button>
+        </mat-radio-group>
+    </label>
+    <br>
+    <label>
+        Sale Price:
+        <input type="number" formControlName="saleprice"><br>
+        <div *ngIf="f.saleprice.errors && (f.saleprice.touched || f.saleprice.dirty)">
+            <div *ngIf="f.saleprice.errors.required">Required</div>
+        </div>
+    </label>
+    <br>
+    <label>
+        Quantity:
+        <input type="number" formControlName="qty"><br>
+        <div *ngIf="f.qty.errors && (f.qty.touched || f.qty.dirty)">
+            <div *ngIf="f.qty.errors.required">Required</div>
+        </div>
+    </label>
+    <br>
+    <button [disabled]=!editProductForm.valid (click)="onEdit()">Add Product</button>
+</form>

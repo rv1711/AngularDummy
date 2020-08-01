@@ -1,0 +1,27 @@
+<button (click)="changeVal()">Change Value</button>
+<button [disabled]="val" (click)="pushVal()">Push</button>
+<div *ngFor="let item of items" [ngStyle]="{'background-color': item % 2 ===0 ?'red':'yellow'}">
+  {{item}}
+</div>
+<!-- <app-demo [showValue]="val"></app-demo> -->
+
+<!-- <div *ngFor="let item of items" [ngStyle]="{'background-color'}">
+{{item}}
+</div> -->
+
+<h1 [innerText]="title" [ngStyle]="{'color': 'red' }"></h1>
+<button (click)="Switch_Expression='MatchExpression1'"> Show First Template</button>
+<button (click)="Switch_Expression='MatchExpression2'"> Show Second Template</button>
+<button (click)="Switch_Expression='MatchExpression3'"> Show Third Template</button>
+<button (click)="Switch_Expression='MatchExpression4'"> Show Forth Template</button>
+
+
+<div [ngSwitch]="Switch_Expression"> 
+    <div *ngSwitchCase="'MatchExpression1'"> First Template</div>
+    <div *ngSwitchCase="'MatchExpression2'">Second template</div> 
+    <div *ngSwitchCase="'MatchExpression3'">Third Template</div> 
+    <div *ngSwitchCase="'MatchExpression4'">forth Template</div> 
+    <div *ngSwitchDefault>Default Template</div>
+</div>
+
+<div><a routerLink="/demo">Navigate to Demo</a></div>

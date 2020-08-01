@@ -1,0 +1,19 @@
+<div>
+    <br>
+    <div>
+        {{product.name}}
+    </div>
+    <div>
+        <div *ngIf="!product.onSale">{{product.mrp}}</div>
+        <del *ngIf="product.onSale">{{product.mrp}}</del>
+    </div>
+    <div *ngIf="product.onSale">
+        {{product.salePrice}}
+    </div>
+    <div>
+        {{product.description}}
+    </div>
+    <button (click)="openAddCart(product)">
+        Add To Cart
+    </button>
+</div>

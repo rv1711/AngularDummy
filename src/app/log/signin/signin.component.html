@@ -1,0 +1,20 @@
+<form [formGroup]="loginForm">
+  
+    <label>
+      User Name:
+      <input type="text" formControlName="email"><br>
+      <div *ngIf="f.email.errors && (f.email.touched || f.email.dirty)">
+        <div *ngIf="f.email.errors.required">Required</div>
+        <div *ngIf="f.email.errors.inValidEmail && !f.email.errors.required">Invalid Email</div>
+      </div>
+    </label>
+  
+    <label>
+      Password:
+      <input type="password" formControlName="password">
+      <div *ngIf="f.password.errors && (f.password.touched || f.password.dirty)">
+        <div *ngIf="f.password.errors.required">Required</div>
+      </div>
+    </label><br>
+    <button [disabled]=!loginForm.valid (click)="onLogin()">Login</button>
+</form>

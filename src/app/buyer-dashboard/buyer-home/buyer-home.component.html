@@ -1,0 +1,15 @@
+<div *ngFor="let product of products">
+    <br>
+    <div>
+        {{product.name}}
+    </div>
+    <div>
+        <div *ngIf="!product.onSale">{{product.mrp}}</div>
+        <del *ngIf="product.onSale">{{product.mrp}}</del>
+    </div>
+    <div *ngIf="product.onSale">
+        {{product.salePrice}}
+    </div>
+    <button [routerLink] = "['..','viewproduct',product._id]">View Product</button>
+    <button (click)="openAddCart(product)">Add to Cart</button>
+</div>

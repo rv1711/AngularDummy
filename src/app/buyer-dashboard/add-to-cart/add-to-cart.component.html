@@ -1,0 +1,6 @@
+<form [formGroup]="addCartQty">
+
+    <div>Quantity</div>
+    <input type="number" formControlName="qty">
+    <button [disabled]=!addCartQty.valid (click)="addToCart()">Add</button>
+</form>

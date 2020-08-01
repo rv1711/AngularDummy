@@ -1,0 +1,56 @@
+<form [formGroup]="addProductForm">
+
+    <label>
+        Product Name:
+        <input type="text" formControlName="productName"><br>
+        <div *ngIf="f.productName.errors && (f.productName.touched || f.productName.dirty)">
+            <div *ngIf="f.productName.errors.required">Required</div>
+        </div>
+    </label>
+    <label>
+        Description:
+        <input type="text" formControlName="description"><br>
+        <div *ngIf="f.description.errors && (f.description.touched || f.description.dirty)">
+            <div *ngIf="f.description.errors.required">Required</div>
+        </div>
+    </label>
+    <br>
+    <mat-form-field>
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="category">
+            <mat-option *ngFor="let category of categories" [value]="category._id">
+                {{category.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field><br>
+    <label>
+        MRP:
+        <input type="number" formControlName="mrp"><br>
+        <div *ngIf="f.mrp.errors && (f.mrp.touched || f.mrp.dirty)">
+            <div *ngIf="f.mrp.errors.required">Required</div>
+        </div>
+    </label>
+    <label>On Sale
+        <mat-radio-group formControlName="onSale">
+            <mat-radio-button *ngFor="let onSalev of onSales" [value]="onSalev.value">
+                {{onSalev.display}}
+            </mat-radio-button>
+        </mat-radio-group>
+    </label><br>
+    <label>
+        Sale Price:
+        <input type="number" formControlName="saleprice"><br>
+        <div *ngIf="f.saleprice.errors && (f.saleprice.touched || f.saleprice.dirty)">
+            <div *ngIf="f.saleprice.errors.required">Required</div>
+        </div>
+    </label>
+    <label>
+        Quantity:
+        <input type="number" formControlName="qty"><br>
+        <div *ngIf="f.qty.errors && (f.qty.touched || f.qty.dirty)">
+            <div *ngIf="f.qty.errors.required">Required</div>
+        </div>
+    </label>
+    <br>
+    <button [disabled]=!addProductForm.valid (click)="onAdd()">Add Product</button>
+</form>
